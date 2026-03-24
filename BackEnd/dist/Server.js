@@ -15,6 +15,8 @@ exports.fs = fs_1.default;
 //import {server as SocketServer} from "socket.io";;
 const path_1 = __importDefault(require("path"));
 exports.path = path_1.default;
+const Db_1 = require("./Database/Db");
+//import mysql from "mysql2/promise";
 const app = (0, express_1.default)();
 exports.app = app;
 const server = http_1.default.createServer(app);
@@ -31,6 +33,27 @@ app.use((0, cors_1.default)());
 server.listen(5000, () => {
     console.log("Server running on port 5000");
 });
+//Database connection example
+// const db=mysql.createPool({
+// // host:"localhost",
+//  host: "localhost",
+// user:"root",
+// password:"root123",
+// database:"node_db",
+// waitForConnections:true,
+// connectionLimit:10,
+// queueLimit:0,
+// })
+//database test connection
+// db.getConnection()
+// .then((connection)=>{
+// console.log("Database connected successfully");
+// connection.release();
+// })
+// .catch((error)=>{
+// console.error("Database connection failed:",error); 
+// });
+(0, Db_1.testDbConnection)();
 // import cors from "cors";        
 // app.use(cors());        
 // import { Server } from "socket.io";
